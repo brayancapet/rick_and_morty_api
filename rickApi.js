@@ -19,7 +19,7 @@ function get_characters(e) {
 function show_characters(results, info) {
   card_container.innerHTML = "";
   results.forEach((card) => {
-    const { name, status, origin, species, image, gender } = card;
+    const { name, status, origin, species, image, location } = card;
     const cardEl = document.createElement("div");
     cardEl.classList.add("card");
     cardEl.innerHTML = `
@@ -32,9 +32,11 @@ function show_characters(results, info) {
         <div class="card-body">
           <h3>${name}</h3>
           <p class="card-text">${species} - (${origin.name})</p>
-          <p class="card-text newcard">Status : ${status}💣</p>
-          
-          <p class="card-text">${gender}</p>
+          <p class="card-text newcard">Status : ${status}${
+      status == "Alive" ? "❤" : "❌"
+    }</p>
+          <p class="card-text">Location :</p>
+          <p class="card-text" style="color: #048f60;">${location.name}</p>
         </div>
     </div>
     `;
